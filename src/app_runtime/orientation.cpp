@@ -26,6 +26,7 @@ int main(int argc, char* argv[]){
     cout<<"q1="<<q1<<endl;
 
 
+    std::cout<<"=====  Accurracy ===== "<<std::endl;
     for(double u=0.0; u<=1.0; u+=0.1){
         auto exact  = SLERP(q0,u,q1);
         auto approx = QLB(q0,u,q1);
@@ -43,8 +44,6 @@ int main(int argc, char* argv[]){
         double u = (rand() % 1000)/1000.0;
         q0 = random::quaternionUniform();
         q1 = random::quaternionUniform();
-        //cout<<"q0="<<q0<<endl;
-        //cout<<"q1="<<q1<<endl;
 
         t1.tic();for(int i=0; i<m; i++){test1*=QLB(q0,u,q1);}t1.toc("QLB");
         t1.tic();for(int i=0; i<m; i++){test2*=SLERP(q0,u,q1);}t1.toc("SLERP");

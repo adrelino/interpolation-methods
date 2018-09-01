@@ -21,7 +21,8 @@ namespace random {
     Eigen::Vector3d vectorUniform(double scale=1.0);
     Eigen::Vector3d vectorNormal(double sigma=1.0);
 
-    Eigen::Quaterniond quaternionUniform();
+    enum class QuaternionSampling {Hypersphere, AngleAxis, Shoemake, NormalDistribution};
+    Eigen::Quaterniond quaternionUniform(QuaternionSampling method=QuaternionSampling::Hypersphere);
 }
 
 } // ns interpol
