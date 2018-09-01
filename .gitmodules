@@ -1,0 +1,3 @@
+[submodule "src/libinterpol/ext/Sophus"]
+	path = src/libinterpol/ext/Sophus
+	url = https://github.com/strasdat/Sophus.git
