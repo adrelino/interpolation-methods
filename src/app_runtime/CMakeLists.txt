@@ -1,0 +1,2 @@
+add_executable(orientation orientation.cpp)
+target_link_libraries(orientation libinterpol)
