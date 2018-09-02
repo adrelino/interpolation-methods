@@ -8,8 +8,8 @@
  */
 #ifndef INTERPOL_RIGID_HPP
 #define INTERPOL_RIGID_HPP
-#include "orientation.hpp"
 
+#include "orientation.hpp"
 #include "rigid/R3xSO3.hpp"
 #include "rigid/DH.hpp"
 #include "rigid/SE3.hpp"

@@ -27,6 +27,11 @@ static T SLERP(const T& lhs, double u, const T& rhs) {
     return lhs*expq(logq(lhs.conjugate()*rhs)*u);
 }
 
+//explicitly specialized for Vector3d to suppurt squad:VSpline in adddition to squad::QSpline
+template <>
+Eigen::Vector3d SLERP(const Eigen::Vector3d& lhs, double u, const Eigen::Vector3d& rhs) {
+    return LERP(lhs,u,rhs);
+}
 
 } // ns interpol
 

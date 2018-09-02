@@ -23,7 +23,7 @@ namespace random {
 
     enum class QuaternionSampling {Hypersphere, AngleAxis, Shoemake, NormalDistribution};
     Eigen::Quaterniond quaternionUniform(QuaternionSampling method=QuaternionSampling::Hypersphere);
-}
+} // ns random
 
 } // ns interpol
 

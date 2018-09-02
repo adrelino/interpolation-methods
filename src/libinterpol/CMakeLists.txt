@@ -1,13 +1,17 @@
 set(INTERPOL_HEADERS
     include/interpol/euclidean.hpp
+    include/interpol/euclidean/b_spline.hpp
+    include/interpol/euclidean/bezier.hpp
     include/interpol/orientation.hpp
     include/interpol/orientation/SU2.hpp
+    include/interpol/orientation/squad.hpp
     include/interpol/rigid.hpp
     include/interpol/rigid/R3xSO3.hpp
     include/interpol/rigid/DH.hpp
     include/interpol/rigid/SE3.hpp
     include/interpol/utils/timer.hpp
     include/interpol/utils/random.hpp
+    include/interpol/utils/vector_a.hpp
 )
 
 set(INTERPOL_SOURCES
