@@ -13,8 +13,8 @@ namespace interpol {
 
 namespace random {
     static std::random_device rd;
-    static std::mt19937 e2(rd()); //different sequence on each start
-    //static std::mt19937 e2(0);    //same random number sequence on each start
+    //static std::mt19937 e2(rd()); //different sequence on each start
+    static std::mt19937 e2(1);    //same random number sequence on each start
     static std::uniform_real_distribution<> distUni(0, 1);
     static std::normal_distribution<> distNor(0,1);
 
@@ -134,9 +134,9 @@ namespace random {
      */
     Eigen::Quaterniond quaternionUniformFromNormalDistribution(){
         Eigen::Quaterniond q(numberNormal(),numberNormal(),numberNormal(),numberNormal());
-        while(q.norm() < 0.01){
-            q=Eigen::Quaterniond(numberNormal(),numberNormal(),numberNormal(),numberNormal());
-        }
+        //while(q.norm() < 0.01){
+        //    q=Eigen::Quaterniond(numberNormal(),numberNormal(),numberNormal(),numberNormal());
+        //}
         return q.normalized();//Norm is 1 even before normalization, AND NO MATTER IF WITH OR withouth, SLERP takes 300ns instead of 130 as in the other 3 methods above.
     }
 
