@@ -1,3 +1,6 @@
 [submodule "src/libinterpol/ext/Sophus"]
 	path = src/libinterpol/ext/Sophus
 	url = https://github.com/strasdat/Sophus.git
+[submodule "src/libinterpol/ext/spline"]
+	path = src/libinterpol/ext/spline
+	url = https://github.com/adrelino/spline.git
