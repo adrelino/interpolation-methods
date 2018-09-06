@@ -1,0 +1,37 @@
+.hull {
+	fill: none;
+	stroke: gray;
+	stroke-width: 1px;
+}
+.db1, .db2{
+	fill: none;
+	stroke-width: 1px;
+}
+.basis {
+	fill: none;
+	stroke-width: 2px;
+}
+.xaxis, .yaxis {
+	fill: none;
+	stroke: black;
+	stroke-width: 1px;
+}
+circle{
+  fill:black;
+}
+.line {
+  fill: none;
+  stroke: gray;
+}
+.curve {
+  fill:none;
+  stroke: black;
+  stroke-width: 3px;
+}
+text{
+  font-family: arial;
+  fill : white;
+  stroke : none;
+  font-size : small;
+  pointer-events : none;
+}

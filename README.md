@@ -27,3 +27,23 @@ In this survey we carefully analyze the characteristics of higher order rigid bo
 
 ## Overview Table:
 <iframe width="100%" height="700px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRjEd2zgFgVCXUL2GkEUxE2mD7HLkCMF0x7wBGbA0Dd3q1NNsWTVWbnYgddNpD4RGMA1W24QYn_V58Z/pubhtml?widget=true&amp;headers=false"></iframe>
+
+
+## Euclidean Interpolation (WebApp)
+
+### composite cubic Bezier curve
+<select name="Continuity" id="continuity">
+    <option label="C0">0</option>
+    <option label="C1">1</option>
+    <option label="C2">2</option>
+</select>
+<div id="vis0"></div>
+
+### cubic B-spline
+<div id="vis1"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js" charset="utf-8"></script>
+<link  href="webapp/style.css" rel="stylesheet" >
+<script src="webapp/plotBasis.js"></script>
+<script src="webapp/deBoor.js"></script>
+<script src="webapp/demo.js"></script>
