@@ -47,3 +47,16 @@ In this survey we carefully analyze the characteristics of higher order rigid bo
 <script src="webapp/plotBasis.js"></script>
 <script src="webapp/deBoor.js"></script>
 <script src="webapp/demo.js"></script>
+
+
+## Orientation Interpolation (screencast of our C++ App)
+
+<div class="outer">
+<video src="http://static.adrian-haarbach.de/mscthesis_adrian_slides/vid/ori.mp4" class="stretch" data-autoplay loop controls type="video/mp4"></video>
+<span class="topleft" style="color:red">Bezier</span>
+<span class="topright" style="color:yellow">Slerp</span>
+<span class="bottomleft" style="color:blue">Squad</span>
+<span class="bottomright" style="color:limegreen">B-spline</span>
+</div>
+
+[source code](https://github.com/adrelino/interpolation-methods/blob/master/src/app_visualization/vis-orientation.cpp) (C++, Eigen, OpenGL)
