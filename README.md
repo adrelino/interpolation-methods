@@ -55,9 +55,19 @@ sudo apt install cmake libeigen3-dev libglfw3-dev
 git checkout https://github.com/adrelino/interpolation-methods.git
 cd interpolation-methods
 git submodule update --init
+```
 
+native
+```sh
 mkdir build && cd build
-cmake -DCMAKE_BUILD_TYPE=Release ../src/
+cmake ../src/ -DCMAKE_BUILD_TYPE=Release
+make
+```
+
+web
+```sh
+mkdir build-web && cd build-web
+cmake ../src -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="~/git/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake" -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
 make
 ```
 
