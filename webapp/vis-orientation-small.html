@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang=en-us>
+    <head>
+        <meta charset=utf-8>
+        <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
+        <title>Emscripten-Generated Code</title>
+        <link  href="em-style.css" rel="stylesheet" >
+    </head>
+    <body>
+        <div class=spinner id=spinner></div>
+        <div class=emscripten id=status>Downloading...</div>
+        <span id=controls>
+            <span>
+                <input type=checkbox id=resize>Resize canvas
+            </span>
+            <span>
+                <input type=checkbox id=pointerLock checked>Lock/hide mouse pointer    
+            </span>
+            <span>
+                <input type=button onclick='Module.requestFullscreen(document.getElementById("pointerLock").checked,document.getElementById("resize").checked)' value=Fullscreen>
+            </span>
+        </span>
+        <div class=emscripten>
+            <progress hidden id=progress max=100 value=0></progress>
+        </div>
+        <div class=emscripten_border>
+            <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
+        </div>
+        <textarea id=output rows=8></textarea>
+        <script src="em-init.js"></script>
+        <script async src=em/vis-orientation.js></script>
+    </body>
+</html>
