@@ -32,12 +32,8 @@ public:
 
     //mimics opencv's Viz
     static void spin();
-    static void spin(int iterations);
-    static void spinToggle(int iterations);
-    static void spinLast();
 
     static Visualize* getInstance();
-    static bool shouldClose();
 
     void setCentroid(Eigen::Vector3d cent);
     void setCam(std::vector<double> cam);
@@ -104,6 +100,7 @@ private:
     Visualize(); // singleton, acces via factory
     ~Visualize();
 
+    static void main_loop();
     void shutdown();
 
     static const int nModifierStates = 16;

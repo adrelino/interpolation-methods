@@ -6,6 +6,10 @@
 #include "utils/glheaders.h"
 #include "utils/glfw_keymap.h"
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 using namespace std;
 
 namespace interpol {
@@ -594,73 +598,27 @@ void Visualize::keyboardW (GLFWwindow* window, int key, int scancode, int action
     instance->keyboard(window,key,scancode,action,modifiers);
 }
 
+void Visualize::main_loop(){
+    /* Render here */
+    displayW(instance->window);
+    /* Swap front and back buffers */
+    glfwSwapBuffers(instance->window);
+    /* Poll for and process events */
+    glfwPollEvents();
+}
+
 void Visualize::spin(){
+#ifdef __EMSCRIPTEN__
+    emscripten_set_main_loop(main_loop, 0, true);
+#else
     //cout<<"q to continue"<<endl;
     while(Visualize::waitKey(GLFW_KEY_Q) && !glfwWindowShouldClose(instance->window)){
-        /* Render here */
-        displayW(instance->window);
-
-        /* Swap front and back buffers */
-        glfwSwapBuffers(instance->window);
-
-//        std::chrono::milliseconds dura( 5 );
-//        std::this_thread::sleep_for( dura );
-
-        /* Poll for and process events */
-        glfwPollEvents();
+        main_loop();
     }
     if(glfwWindowShouldClose(instance->window)){
         instance->shutdown();
     }
-}
-
-void Visualize::spinLast(){
-    cout<<"ESC to quit"<<endl;
-    while(Visualize::waitKey(GLFW_KEY_ESCAPE) && !glfwWindowShouldClose(instance->window)){
-        /* Render here */
-        displayW(instance->window);
-
-        /* Swap front and back buffers` */
-        glfwSwapBuffers(instance->window);
-
-//        std::chrono::milliseconds dura( 5 );
-//        std::this_thread::sleep_for( dura );
-
-        /* Poll for and process events */
-        glfwPollEvents();
-    }
-
-   // if(glfwWindowShouldClose(instance->window)){
-        instance->shutdown();
-    //}
-
-}
-
-void Visualize::spin(int i){
-    while(i-- > 0){
-        /* Render here */
-        displayW(instance->window);
-
-        /* Swap front and back buffers */
-        glfwSwapBuffers(instance->window);
-
-//        std::chrono::milliseconds dura( 5 );
-//        std::this_thread::sleep_for( dura );
-
-        /* Poll for and process events */
-        glfwPollEvents();
-    }
-    if(glfwWindowShouldClose(instance->window)){
-        instance->shutdown();
-    }
-}
-
-void Visualize::spinToggle(int i){
-    if(getInstance()->keyToggle[GLFW_KEY_R]){
-        spin(i);
-    }else{
-        spin();
-    }
+#endif
 }
 
 bool Visualize::waitKeyInst(int key){
@@ -682,10 +640,6 @@ bool Visualize::waitKeyInst(int key){
 
 bool Visualize::waitKey(int key){
     return getInstance()->waitKeyInst(key);
-}
-
-bool Visualize::shouldClose(){
-    return glfwWindowShouldClose(getInstance()->window);
 }
 
 bool Visualize::toggled(int c, int modifiers){

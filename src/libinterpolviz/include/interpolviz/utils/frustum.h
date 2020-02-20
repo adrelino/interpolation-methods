@@ -56,8 +56,8 @@ static void drawFrustum(float fovY, float aspectRatio, float nearPlane, Eigen::V
     // draw the edges around frustum
     glLineWidth(2);
     //glColor3f(1,1,1);
-    glBegin(GL_LINES);
     glColor3dv(colorLineV.data());
+    glBegin(GL_LINES);
     glVertex3f(0, 0, 0);
     //glColor4fv(colorLine1);
     glVertex3fv(vertices[0]);

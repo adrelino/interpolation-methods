@@ -57,19 +57,36 @@ cd interpolation-methods
 git submodule update --init
 ```
 
-native
+#### native
 ```sh
 mkdir build && cd build
-cmake ../src/ -DCMAKE_BUILD_TYPE=Release
+cmake ../src
 make
 ```
-
-web
+#### web 
+[Install emscripten](https://emscripten.org/docs/getting_started/downloads.html#installation-instructions)
+```sh
+git clone https://github.com/emscripten-core/emsdk.git
+cd emsdk
+git pull
+./emsdk update-tags
+./emsdk install latest
+./emsdk activate latest
+source ./emsdk_env.sh
+cd ..
+```
+Then build
 ```sh
 mkdir build-web && cd build-web
-cmake ../src -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="~/git/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake" -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
+cmake ../src -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3 -DCMAKE_TOOLCHAIN_FILE="../emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake" 
 make
 ```
+serve the file either using node or python
+```
+npx http-server
+python2 -m SimpleHTTPServer 8080
+```
+Then open http://localhost:8080.
 
 
 ## Execution

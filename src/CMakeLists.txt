@@ -3,6 +3,11 @@ project(interpolation-methods)
 
 set(CMAKE_CXX_STANDARD 11)
 
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Release)
+endif()
+message("CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+
 option(INTERPOL_BUILD_APP_RUNTIME_EXPERIMENTS "Build Runtime Experiments" ON)
 option(INTERPOL_BUILD_VIZ "Build Visualization" ON)
 
