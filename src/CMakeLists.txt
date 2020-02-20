@@ -8,6 +8,11 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 message("CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
 
+if(EMSCRIPTEN)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/../webapp/em")
+endif()
+message("EMSCRIPTEN: ${EMSCRIPTEN}")
+
 option(INTERPOL_BUILD_APP_RUNTIME_EXPERIMENTS "Build Runtime Experiments" ON)
 option(INTERPOL_BUILD_VIZ "Build Visualization" ON)
 

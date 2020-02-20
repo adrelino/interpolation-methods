@@ -23,6 +23,7 @@ int main(int argc, char * argv[]){
     Poses3d posesWithPhantoms = Pose3d::addPhantomPoses(poses);
 
     vector<std::shared_ptr<Trajectory>> trajectories;
+    vector<std::shared_ptr<Trajectory>> trajectoriesVis;
 
     int modifer=0;
 
@@ -33,7 +34,7 @@ int main(int argc, char * argv[]){
     auto slerpDualQuat = make_shared<TrajectoryLinear>(poses, 2);
     //auto slerpDualQuatGeometric = make_shared<TrajectoryLinear>(poses, 3);
     auto slerpDualQuatDLup = make_shared<TrajectoryLinear>(poses, 4);
-    trajectories.push_back(pSLERP);
+    trajectories.push_back(pSLERP);trajectoriesVis.push_back(pSLERP);
     trajectories.push_back(pQLERP);
     trajectories.push_back(slerpDualQuatDLup);
     trajectories.push_back(slerpSE3);
@@ -54,10 +55,10 @@ int main(int argc, char * argv[]){
     auto fusion = make_shared<TrajectorySplineFusion>(posesWithPhantoms, true);
     auto dualQuat = make_shared<TrajectorySplineDualQuaternion>(posesWithPhantoms, true, false);
     auto dualQuatApprox = make_shared<TrajectorySplineDualQuaternion>(posesWithPhantoms, true, true);
-    trajectories.push_back(squad);
-    trajectories.push_back(renormalized);
+    trajectories.push_back(squad);trajectoriesVis.push_back(squad);
+    trajectories.push_back(renormalized);trajectoriesVis.push_back(renormalized);
     //trajectories.push_back(renormalizedFirstDerivBound);
-    trajectories.push_back(kimKimShin);
+    trajectories.push_back(kimKimShin);trajectoriesVis.push_back(kimKimShin);
     trajectories.push_back(fusion);
     trajectories.push_back(dualQuat);
     trajectories.push_back(dualQuatApprox);
@@ -74,17 +75,17 @@ int main(int argc, char * argv[]){
 
 
     Visualize *V = Visualize::getInstance();
-    TrajectoryVisualization(trajectories,V,poses,posesWithPhantoms);
+    TrajectoryVisualization(trajectoriesVis,V,poses,posesWithPhantoms);
 
-    V->setToggleState(GLFW_KEY_R,true);
+    //V->setToggleState(GLFW_KEY_R,true);
     //V->setPressState(GLFW_KEY_5);
     //V->setToggleState(GLFW_KEY_F5,GLFW_MOD_SHIFT,true);
     V->setToggleState(GLFW_KEY_B,3);
     //V->setToggleState(GLFW_KEY_B,GLFW_MOD_SHIFT,3);
-    V->setToggleState(GLFW_KEY_C,false);//control polygon
+    V->setToggleState(GLFW_KEY_C,true);//control polygon
     V->setToggleState(GLFW_KEY_F11,true);//lightning
     V->setToggleState(GLFW_KEY_F10,false);//blending
-    V->setToggleState(GLFW_KEY_F9,false);//black
+    V->setToggleState(GLFW_KEY_F9,true);//black=false, white=true
     V->setToggleState(GLFW_KEY_U,GLFW_MOD_SHIFT,true);//QUATERNION UNIT SPHERe
     V->setToggleState(GLFW_KEY_F7,false);//translation curves
     V->setToggleState(GLFW_KEY_F8,true);//orientation curves

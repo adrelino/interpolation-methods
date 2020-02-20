@@ -25,8 +25,8 @@ class Visualize {
 public:
     static constexpr double maxBox[] = {1e-2, 1e-3, 1e-1, 1e-2};
 
-    const static int FLAGS_width = 1500;
-    const static int FLAGS_height = 1000;
+    const static int FLAGS_width = 800;
+    const static int FLAGS_height = 800;
 
     static bool waitKey(int key); //wait in another thread for keypress in opengl window
 
