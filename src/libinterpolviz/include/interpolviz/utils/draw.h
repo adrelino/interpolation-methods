@@ -91,12 +91,14 @@ public:
                 *n++ = z;
             }
 
-        indices.resize(rings * sectors * 4);
+        indices.resize(rings * sectors * 6);
         std::vector<GLushort>::iterator i = indices.begin();
         for(r = 0; r < rings-1; r++) for(s = 0; s < sectors-1; s++) {
                 *i++ = r * sectors + s;
                 *i++ = r * sectors + (s+1);
                 *i++ = (r+1) * sectors + (s+1);
+                *i++ = r * sectors + s;//0 //https://gamedev.stackexchange.com/questions/10727/fastest-way-to-draw-quads-in-opengl-es
+                *i++ = (r+1) * sectors + (s+1);//2
                 *i++ = (r+1) * sectors + s;
             }
     }
@@ -109,7 +111,7 @@ public:
         glVertexPointer(3, GL_FLOAT, 0, &vertices[0]);
         glNormalPointer(GL_FLOAT, 0, &normals[0]);
         //glTexCoordPointer(2, GL_FLOAT, 0, &texcoords[0]);
-        glDrawElements(GL_QUADS, indices.size(), GL_UNSIGNED_SHORT, &indices[0]);
+        glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_SHORT, &indices[0]);
         glDisableClientState(GL_VERTEX_ARRAY);
         glDisableClientState(GL_NORMAL_ARRAY);
         glDisableClientState(GL_TEXTURE_COORD_ARRAY);
