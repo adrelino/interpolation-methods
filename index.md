@@ -52,21 +52,19 @@ In this survey we carefully analyze the characteristics of higher order rigid bo
 ## Orientation Interpolation
 
 ### WebApp (emscripten port of our C++ App)
-<style> .outer { width: 800px;} </style>
-<div class=spinner id=spinner></div>
-<div class=emscripten id=status>Downloading...</div>
-<input type=button onclick='Module.requestFullscreen(false,false)' value=Fullscreen>
-<progress hidden id=progress max=100 value=0></progress>
-<div class=outer>
-    <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
+<div>
+<input type="button" onclick="Module.requestFullscreen(false,true)" value="Fullscreen">
+<div class="outer">
+    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
     <span class="topleft" style="color:red">Bezier</span>
     <span class="topright" style="color:yellow">Slerp</span>
     <span class="bottomleft" style="color:blue">Squad</span>
     <span class="bottomright" style="color:limegreen">B-spline</span>
 </div>
-<textarea id=output rows=8 style="width:100%"></textarea>
+<textarea id="output" rows="8" style="width:100%"></textarea>
 <script src="webapp/em-init.js"></script>
-<script async src=webapp/em/vis-orientation.js></script>
+<script async src="webapp/em/vis-orientation.js"></script>
+</div>
 
 ### Video (screencast of our C++ App)
 <div class="outer">

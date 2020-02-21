@@ -1,6 +1,6 @@
-var statusElement = document.getElementById("status")
-, progressElement = document.getElementById("progress")
-, spinnerElement = document.getElementById("spinner")
+var statusElement = document.getElementById("status") || null
+, progressElement = document.getElementById("progress") || null
+, spinnerElement = document.getElementById("spinner") || null
 , Module = {
   preRun: [],
   postRun: [],
@@ -28,11 +28,11 @@ var statusElement = document.getElementById("status")
       e
   }(),
   setStatus: function(e) {
+      if(statusElement == null || progressElement == null || spinnerElement == null) return;
       if (Module.setStatus.last || (Module.setStatus.last = {
           time: Date.now(),
           text: ""
-      }),
-      e !== Module.setStatus.last.text) {
+      }), e !== Module.setStatus.last.text) {
           var t = e.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/)
             , n = Date.now();
           t && n - Module.setStatus.last.time < 30 || (Module.setStatus.last.time = n,
@@ -56,9 +56,9 @@ var statusElement = document.getElementById("status")
 };
 Module.setStatus("Downloading..."),
 window.onerror = function(e) {
-  Module.setStatus("Exception thrown, see JavaScript console"),
-  spinnerElement.style.display = "none",
+  Module.setStatus("Exception thrown, see JavaScript console");
+  if(spinnerElement) spinnerElement.style.display = "none";
   Module.setStatus = function(e) {
-      e && Module.printErr("[post-exception status] " + e)
+      e && Module.printErr("[post-exception status] " + e);
   }
 }
